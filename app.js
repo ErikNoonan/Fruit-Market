@@ -58,10 +58,18 @@ function randomNumber(min, max, precision) {
     return Math.floor(Math.random() * (1 + max - min) + min);
 };
 
-function priceTimer () {
-  $('.marketPrice').append(randomNumber(-50, 50) / 100);
-}
+function priceGenerator () {
+  for (var i = 0; i <fruits.length; i++) 
+  $('#applesPrice').text(parseFloat(fruits[0].marketPrice + (randomNumber(-50, 50) / 100)).toFixed(2));
+  $('#orangesPrice').text(parseFloat(fruits[1].marketPrice + (randomNumber(-50, 50) / 100)).toFixed(2));
+  $('#bananasPrice').text(parseFloat(fruits[2].marketPrice + (randomNumber(-50, 50) / 100)).toFixed(2));
+  $('#grapesPrice').text(parseFloat(fruits[3].marketPrice + (randomNumber(-50, 50) / 100)).toFixed(2));
+  }
+};
 
+function priceTimer() {
+  setInterval(priceGenerator, 5000);
+};
 
 
 
@@ -79,7 +87,7 @@ $(function() {
     $('#bananasPrice').append(bananas.marketPrice);
     $('#grapesPrice').append(grapes.marketPrice);
 
-
+priceTimer();
 
 
     $('.fruit').on('click', '.buyButton', function() {
